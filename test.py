@@ -11,16 +11,16 @@ def softmax(x, axis=-1):
 # -------------------------------
 # 1. Load the Label Mapping & Tokenizer
 # -------------------------------
-with open("./mobilebert-luna-ner-tflite/intent_mapping.json", "r") as f:
+with open("intent_mapping.json", "r") as f:
     id2label_mapping = json.load(f)
 
-model_dir = "./mobilebert-luna-ner"
+model_dir = "."
 tokenizer = AutoTokenizer.from_pretrained(model_dir)
 
 # -------------------------------
 # 2. Load the TFLite Model
 # -------------------------------
-tflite_model_file = "mobilebert-luna-ner-tflite/model.tflite"
+tflite_model_file = "model.tflite"
 interpreter = tf.lite.Interpreter(model_path=tflite_model_file)
 interpreter.allocate_tensors()
 
